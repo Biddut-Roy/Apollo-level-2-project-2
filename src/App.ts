@@ -14,4 +14,12 @@ app.get('/', (req: Request, res: Response) => {
 // application routes
 app.use('/inventory/v1/', ProductRoutes);
 
+//route not found
+app.use((req, res, next) => {
+  res.status(404).json({
+    success: false,
+    message: 'Route not found',
+  });
+});
+
 export default app;
