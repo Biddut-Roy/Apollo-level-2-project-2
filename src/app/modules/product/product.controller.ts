@@ -1,6 +1,25 @@
 import { Request, Response } from 'express';
 import { ProductService } from './product.service';
 
+//get all Product Route
+const getProduct = async (req: Request, res: Response) => {
+  try {
+    const result = await ProductService.getProductDB;
+    res.status(200).json({
+      success: true,
+      message: 'Products fetched successfully!',
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Something went wrong',
+      error: err,
+    });
+  }
+};
+
+// create a Product Route
 const createProduct = async (req: Request, res: Response) => {
   try {
     const productData = req.body;
@@ -21,4 +40,5 @@ const createProduct = async (req: Request, res: Response) => {
 
 export const ProductControllers = {
   createProduct,
+  getProduct,
 };
