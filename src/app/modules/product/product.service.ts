@@ -10,7 +10,14 @@ const createProductDB = (productInfo: TProduct) => {
   const result = productModel.create(productInfo);
   return result;
 };
+
+const getSingleIdProductDB = (id: string) => {
+  const result = productModel.findById({ id });
+  return result;
+};
+
 export const ProductService = {
   createProductDB,
   getProductDB,
+  getSingleIdProductDB,
 };
