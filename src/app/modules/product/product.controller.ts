@@ -19,6 +19,6 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const ProductControlars = {
+export const ProductControllers = {
   createProduct,
 };
