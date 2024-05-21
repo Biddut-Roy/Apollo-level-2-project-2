@@ -19,8 +19,18 @@ const getSingleIdProductDB = (id: string) => {
   return result;
 };
 
+//get a single id by search product info
+const updateIdProductDB = (id: string, data: TProduct) => {
+  const result = productModel.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
 export const ProductService = {
   createProductDB,
   getProductDB,
   getSingleIdProductDB,
+  updateIdProductDB,
 };

@@ -38,7 +38,7 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-// create a Product Route
+// search a single id product
 const getSingleIdByProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -57,8 +57,32 @@ const getSingleIdByProduct = async (req: Request, res: Response) => {
   }
 };
 
+// update a Product
+const updateSingleIdByProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const updateData = req.body;
+    const result = await ProductService.updateIdProductDB(
+      productId,
+      updateData,
+    );
+    res.status(200).json({
+      success: true,
+      message: 'Product updated successfully!',
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Something went wrong',
+      error: err,
+    });
+  }
+};
+
 export const ProductControllers = {
   createProduct,
   getProduct,
   getSingleIdByProduct,
+  updateSingleIdByProduct,
 };
