@@ -30,7 +30,7 @@ To install the application, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone [https://github.com/Biddut-Roy/Apollo-level-2-project-2](https://github.com/Biddut-Roy/Apollo-level-2-project-2)
+   git clone https://github.com/Biddut-Roy/Apollo-level-2-project-2
    ```
 2. Navigate to the project directory:
    ```sh
@@ -69,5 +69,7 @@ The application requires a configuration file to connect to the MongoDB database
 
    ```env
    PORT=5000
+   ```
    ```mongoDB
    DatabaseURL="yoour Db URL here"
+   ```
