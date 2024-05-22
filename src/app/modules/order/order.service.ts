@@ -1,6 +1,12 @@
 import { orderModel } from '../order.model';
 import { TOrder } from './order.interface';
 
+//get all order services
+const getAllOrderDB = () => {
+  const result = orderModel.find();
+  return result;
+};
+
 //create a product services
 const createOrderDB = (orderInfo: TOrder) => {
   const result = orderModel.create(orderInfo);
@@ -9,4 +15,5 @@ const createOrderDB = (orderInfo: TOrder) => {
 
 export const OrderServices = {
   createOrderDB,
+  getAllOrderDB,
 };
