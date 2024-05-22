@@ -4,12 +4,23 @@ import { ProductService } from './product.service';
 //get all Product Route
 const getProduct = async (req: Request, res: Response) => {
   try {
-    const result = await ProductService.getProductDB;
-    res.status(200).json({
-      success: true,
-      message: 'Products fetched successfully!',
-      data: result,
-    });
+    const { searchTerm } = req.query;
+    if (searchTerm && searchTerm === 'string') {
+      const result = await ProductService.getProductDB(searchTerm);
+      res.status(200).json({
+        success: true,
+        message: "Products matching search term 'iphone' fetched successfully!",
+        data: result,
+      });
+    } else {
+      // Get all orders
+      const result = await ProductService.getProductDB();
+      res.status(200).json({
+        success: true,
+        message: 'Products fetched successfully!',
+        data: result,
+      });
+    }
   } catch (err) {
     res.status(500).json({
       success: false,
