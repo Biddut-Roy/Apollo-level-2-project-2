@@ -7,6 +7,11 @@ const getProduct = async (req: Request, res: Response) => {
     const { searchTerm } = req.query;
     if (searchTerm && searchTerm === 'string') {
       const result = await ProductService.getProductDB(searchTerm);
+      if (result.length === 0) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Product not found' });
+      }
       res.status(200).json({
         success: true,
         message: "Products matching search term 'iphone' fetched successfully!",
@@ -15,6 +20,11 @@ const getProduct = async (req: Request, res: Response) => {
     } else {
       // Get all orders
       const result = await ProductService.getProductDB();
+      if (result.length === 0) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Product not found' });
+      }
       res.status(200).json({
         success: true,
         message: 'Products fetched successfully!',
