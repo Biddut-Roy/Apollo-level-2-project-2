@@ -15,7 +15,7 @@ const createProductDB = (productInfo: TProduct) => {
 
 //get a single id by search product info
 const getSingleIdProductDB = (id: string) => {
-  const result = productModel.findById({ id });
+  const result = productModel.findById({ _id: id });
   return result;
 };
 
@@ -28,9 +28,16 @@ const updateIdProductDB = (id: string, data: TProduct) => {
   return result;
 };
 
+//delete id by product
+const deleteIdProductDB = (id: string) => {
+  const result = productModel.findByIdAndDelete({ _id: id });
+  return result;
+};
+
 export const ProductService = {
   createProductDB,
   getProductDB,
   getSingleIdProductDB,
   updateIdProductDB,
+  deleteIdProductDB,
 };

@@ -14,4 +14,9 @@ router.put(
   ProductControllers.updateSingleIdByProduct,
 );
 
+router.delete(
+  '/api/products/:productId',
+  ProductControllers.updateSingleIdByProduct,
+);
+
 export const ProductRoutes = router;
