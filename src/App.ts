@@ -18,7 +18,7 @@ app.use('/inventory/v1/', ProductRoutes);
 app.use('/inventory/order/v1/', OrderRoutes);
 
 //route not found
-app.use((req, res, next) => {
+app.use((req: Request, res: Response) => {
   res.status(404).json({
     success: false,
     message: 'Route not found',

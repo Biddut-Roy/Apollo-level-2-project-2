@@ -1,5 +1,6 @@
 import { productModel } from '../product.model';
 import { TProduct } from './product.interface';
+import { productZODtSchema } from './productZOD.validation';
 
 //get all product services
 const getProductDB = async (searchTerm?: string) => {
@@ -19,7 +20,8 @@ const getProductDB = async (searchTerm?: string) => {
 
 //create a product services
 const createProductDB = async (productInfo: TProduct) => {
-  const result = await productModel.create(productInfo);
+  const zodValidationData = productZODtSchema.parse(productInfo);
+  const result = await productModel.create(zodValidationData);
   return result;
 };
 

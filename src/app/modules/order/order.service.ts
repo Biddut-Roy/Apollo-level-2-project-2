@@ -5,11 +5,10 @@ import { orderValidationSchema } from './orderZOD.validation';
 //get all order services
 const getAllOrderDB = async (email?: string) => {
   if (email) {
-    // Find orders by email if provided
+    // Find orders by email
     const result = await orderModel.find({ email });
     return result;
   } else {
-    // Return all orders if no email is provided
     return await orderModel.find();
   }
 };
