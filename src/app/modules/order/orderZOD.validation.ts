@@ -2,9 +2,7 @@ import { z } from 'zod';
 
 export const orderValidationSchema = z.object({
   email: z.string().email({ message: 'Please use a valid email address.' }),
-  productId: z
-    .string()
-    .regex(/^[0-9a-fA-F]{24}$/, { message: 'Invalid ObjectId format.' }),
+  productId: z.string().nonempty({ message: 'ProductId is required.' }),
   price: z
     .number()
     .min(0, { message: 'Price must be greater than or equal to 0.' }),

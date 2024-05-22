@@ -6,10 +6,9 @@ const orderSchema = new Schema<TOrder>({
   email: {
     type: String,
     required: true,
-    match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
   },
   productId: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
   },
   price: {
