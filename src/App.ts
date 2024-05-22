@@ -13,9 +13,9 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // application routes
-app.use('/inventory/v1/', ProductRoutes);
+app.use('/api/products', ProductRoutes);
 
-app.use('/inventory/order/v1/', OrderRoutes);
+app.use('/api/orders', OrderRoutes);
 
 //route not found
 app.use((req: Request, res: Response) => {

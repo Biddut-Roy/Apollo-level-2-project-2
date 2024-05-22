@@ -3,20 +3,14 @@ import { ProductControllers } from './product.controller';
 
 const router = express.Router();
 
-router.get('/api/products', ProductControllers.getProduct);
+router.get('/', ProductControllers.getProduct);
 
-router.post('/api/products', ProductControllers.createProduct);
+router.post('/', ProductControllers.createProduct);
 
-router.get('/api/products/:productId', ProductControllers.getSingleIdByProduct);
+router.get('/:productId', ProductControllers.getSingleIdByProduct);
 
-router.put(
-  '/api/products/:productId',
-  ProductControllers.updateSingleIdByProduct,
-);
+router.put('/:productId', ProductControllers.updateSingleIdByProduct);
 
-router.delete(
-  '/api/products/:productId',
-  ProductControllers.updateSingleIdByProduct,
-);
+router.delete('/:productId', ProductControllers.updateSingleIdByProduct);
 
 export const ProductRoutes = router;
