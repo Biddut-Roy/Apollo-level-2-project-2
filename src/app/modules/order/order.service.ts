@@ -29,7 +29,11 @@ const createOrderDB = async (orderInfo: TOrder) => {
   }
 
   product.inventory.quantity -= quantity;
-  product.inventory.inStock = product.inventory.quantity > 0;
+  if (product.inventory.quantity >= 0) {
+    // If it is, set inStock to false
+    product.inventory.inStock = false;
+  }
+
   // Save updated product
   await product.save();
 
