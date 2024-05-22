@@ -31,7 +31,7 @@ const getSingleIdProductDB = async (id: string) => {
   return result;
 };
 
-//get a single id by search product info
+//update a single id
 const updateIdProductDB = async (id: string, data: TProduct) => {
   const result = await productModel.findByIdAndUpdate(id, data, {
     new: true,
