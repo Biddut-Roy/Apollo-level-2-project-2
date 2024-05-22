@@ -1,5 +1,6 @@
 import { orderModel } from '../order.model';
 import { TOrder } from './order.interface';
+import { orderValidationSchema } from './orderZOD.validation';
 
 //get all order services
 const getAllOrderDB = async (email?: string) => {
@@ -15,7 +16,8 @@ const getAllOrderDB = async (email?: string) => {
 
 //create a product services
 const createOrderDB = async (orderInfo: TOrder) => {
-  const result = await orderModel.create(orderInfo);
+  const zodValidationData = orderValidationSchema.parse(orderInfo);
+  const result = await orderModel.create(zodValidationData);
   return result;
 };
 
