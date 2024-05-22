@@ -1,32 +1,26 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import node from "eslint-plugin-node";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import prettierConfig from "eslint-config-prettier";
-export default [
-  {
-    files: ["src/**/*.ts", "src/**/*.tsx"],
-    languageOptions: {
-      globals: globals.node,
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parser: tsParser,
-    },
-  },
-  pluginJs.configs.recommended,
+import eslint from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    plugins: {
-      node,
-      "@typescript-eslint": tsPlugin,
-    },
-    rules: {
-      "no-unused-vars": "warn",
-      semi: ["error", "always"],
-      "no-console": "warn",
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
-  prettierConfig,
-];
+  {
+    rules: {
+      'no-unused-vars': 'error',
+      'no-undef': 'error',
+      'prefer-const': 'error',
+      'no-console': 'warn',
+    },
+  },
+  {
+    ignores: ['**/node_modules/', '**/dist/'],
+  },
+);

@@ -4,13 +4,23 @@ import { OrderServices } from './order.service';
 // create a Product Route
 const getAllOrder = async (req: Request, res: Response) => {
   try {
-    const orderData = req.body;
-    const result = await OrderServices.getAllOrderDB();
-    res.status(200).json({
-      success: true,
-      message: 'Orders fetched successfully!',
-      data: result,
-    });
+    const { email } = req.query;
+    if (email && typeof email === 'string') {
+      const result = await OrderServices.getAllOrderDB(email);
+      res.status(200).json({
+        success: true,
+        message: 'Orders fetched successfully!',
+        data: result,
+      });
+    } else {
+      // Get all orders
+      const result = await OrderServices.getAllOrderDB();
+      res.status(200).json({
+        success: true,
+        message: 'Orders fetched successfully for user email!',
+        data: result,
+      });
+    }
   } catch (err) {
     res.status(500).json({
       success: false,
